@@ -1,0 +1,7 @@
+<h1>Edit Todo</h1>
+<%= form_for @todo, url: {action: "update"} do |f|%>
+    <%=f.text_field :name%>
+    <%=f.date_field :due%>
+
+    <%=f.submit "Save"%>
+<% end %>

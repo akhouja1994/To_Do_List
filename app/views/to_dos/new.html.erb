@@ -1,0 +1,7 @@
+<h1>CREAT Todo</h1>
+<%= form_for @todo, url: {action: "create"} do |f|%>
+    <%=f.text_field :name%>
+    <%=f.date_field :due%>
+
+    <%=f.submit "Save"%>
+<% end %>
