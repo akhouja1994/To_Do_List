@@ -1,11 +1,13 @@
 <h1>Todos list</h1>
-<%@todos.each do |todo|%>
-    <tr>
-        <td><%=todo.name%></td>
-        <td><%=todo.due%></td>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_to_do_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+<% if not @todos.nil? %>
+    <%@todos.each do |todo|%>
+        <tr>
+            <td><%=todo.name%></td>
+            <td><%=todo.due%></td>
+            <td><%= link_to 'Show', todo %></td>
+            <td><%= link_to 'Edit', edit_to_do_path(todo) %></td>
+            <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
     <% end %>
+<% end %>
 <%= link_to 'new todo',new_to_do_path %>

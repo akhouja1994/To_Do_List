@@ -1,7 +1,7 @@
 <h1>Edit Todo</h1>
 <%= form_for @todo, url: {action: "update"} do |f|%>
     <%=f.text_field :name%>
-    <%=f.date_field :due%>
-
+    <%=f.date_field, type:'date', html: {:max=> '2018-02-02'} :due%>
+    tag('input', :data => {:type => 'date', :max => '2018-02-02'})
     <%=f.submit "Save"%>
 <% end %>

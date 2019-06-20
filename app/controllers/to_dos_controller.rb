@@ -1,13 +1,13 @@
 class ToDosController < ApplicationController
     before_action :set_todo, only: [:show, :edit, :update, :destroy]
     def index
-        @todos = ToDo.all
+        @todos = current_user.to_dos
     end
     def new
-        @todo = ToDo.new
+        @todo = current_user.to_dos.new
     end
     def create
-        @todo=ToDo.new(todo_params)
+        @todo=current_user.to_dos.new(todo_params)
 
         respond_to do |format|
             if @todo.save
@@ -30,10 +30,10 @@ class ToDosController < ApplicationController
         params.require(:to_do).permit(:name, :due)
     end
     def set_todo
-        @todo = ToDo.find(params[:id])
+        @todo = current_user.to_dos.find(params[:id])
       end
     def show
-        @todo = ToDo.find(params[:id])
+        @todo = current_user.to_dos.find(params[:id])
     end
     def update
         respond_to do |format|
@@ -47,7 +47,7 @@ class ToDosController < ApplicationController
         end
       end
       def edit
-        @todo = ToDo.find(params[:id])
+        @todo = current_user.to_dos.find(params[:id])
       end
 
 end
